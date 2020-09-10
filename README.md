@@ -2,9 +2,19 @@
 
 Additional features and challenges inspired by nightmare mode.
 
-## Notes
+> **This mod is largely a work-in-progress.** Currently all challenges come in the form of "cursed" perks that can be optionally picked-up in the mountain entrance. This may change in the future, as new curses and other challenges are implemented.
 
-### Relevant vanilla mechanics
+## Features
+
+### Cursed perks
+
+- Heartbreak: maximum health can no longer be increased
+
+## Developer notes
+
+### Capping all cases of maximum HP increase
+
+In order to get the heartbreak curse to work, all cases of maximum HP increase must be accounted for.
 
 The following perks interact the player's maximum HP in some way:
 
