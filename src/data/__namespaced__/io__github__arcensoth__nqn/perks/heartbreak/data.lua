@@ -25,14 +25,7 @@ data.on_init = function(entity_perk_item, entity_who_picked, item_name)
 		end
 	end
 	-- Stop temple hearts from overriding the cap and increasing maximum HP.
-	EntityAddComponent(
-		entity_who_picked,
-		"VariableStorageComponent",
-		{ 
-			name = "temple_hearts_obey_max_hp_cap",
-			value_int = 1,
-		}
-	)
+	EntityAddTag(entity_who_picked, "temple_hearts_obey_max_hp_cap")
 end
 
 -- @@ PERK DEFINITION

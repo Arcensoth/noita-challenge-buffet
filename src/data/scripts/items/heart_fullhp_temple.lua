@@ -10,25 +10,9 @@ function item_pickup( entity_item, entity_who_picked, name )
 	local healing = 0
 
 	-- NOTE START CHANGES
-	local obey_max_hp_cap = 0
-
-	local vs_components = EntityGetComponent( entity_who_picked, "VariableStorageComponent" )
-
-	if( vs_components ~= nil ) then
-		for key,comp_id in pairs(vs_components) do 
-			local var_name = ComponentGetValue( comp_id, "name" )
-			if( var_name == "temple_hearts_obey_max_hp_cap") then
-				local comp_value = ComponentGetValueInt( comp_id, "value_int" )
-				if( comp_value ~= nil ) then
-					obey_max_hp_cap = comp_value
-				end
-			end
-		end
-	end
-	
-	if (obey_max_hp_cap >= 1) then
-		max_hp_addition = 0
-	end
+	if (EntityHasTag(entity_who_picked, "temple_hearts_obey_max_hp_cap")) then
+        max_hp_addition = 0
+    end
 	-- NOTE END CHANGES
 	
 	local x, y = EntityGetTransform( entity_item )

@@ -35,7 +35,7 @@ The following items increase the player's maximum HP _as well as_ their maximum 
 
 All in all, only `heart_fullhp_temple` needs to be adjusted to keep the player's maximum HP frozen at a particular value.
 
-To accomplish this, we introduce a new `VariableStorageComponent` named `temple_hearts_obey_max_hp_cap` containing a `value_int` that states whether temple hearts should obey the player's current maximum HP cap.
+To accomplish this, we introduce a new tag `temple_hearts_obey_max_hp_cap` whose presence negates the maximum HP increase of temple hearts.
 
 ### Accounting for all cases of touching gold
 
