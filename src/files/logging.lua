@@ -15,7 +15,9 @@ log.LEVEL_ERROR = 4
 log.LEVEL_CRITICAL = 5
 
 -- NOTE Set this to whatever level you want to log at.
-log.LEVEL = log.LEVEL_INFO
+log.LEVEL = log.LEVEL_DEBUG
+
+log.DO_GAME_PRINT = DebugGetIsDevBuild()
 
 log.LEVEL_NAMES = {
 	"DEBUG",
@@ -29,7 +31,7 @@ log.log_with_level = function(message, level)
 	if (level >= log.LEVEL) then
 		local text = "[" .. ns.LOCAL_NAMESPACE .. ":" .. log.LEVEL_NAMES[level] .. "] " .. message
 		print(text)
-		if (level == log.LEVEL_DEBUG) then
+		if (log.DO_GAME_PRINT) then
 			GamePrint(text)
 		end
 	end
