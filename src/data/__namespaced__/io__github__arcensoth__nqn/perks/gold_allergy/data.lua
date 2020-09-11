@@ -39,17 +39,6 @@ data.do_gold_death = function(entity)
     -- Place the gold player statue.
     EntityLoad(ns.file("perks/gold_allergy/projectiles/gold_burst.xml"), x, y)
     EntityLoad(ns.base_file("entities/animals/boss_centipede/rewards/gold_reward.xml"), x, y)
-	-- Get the player's max HP, and inflict at least that much damage.
-	-- NOTE Was hoping to change cause-of-death with this, but it has other side-effects.
-    -- local damagemodels = EntityGetComponent(entity, "DamageModelComponent")
-    -- local damage_to_inflict = 0
-	-- if (damagemodels ~= nil) then
-	-- 	for i, damagemodel in ipairs(damagemodels) do
-	-- 		damage_to_inflict = damage_to_inflict + tonumber(ComponentGetValue(damagemodel, "max_hp"))
-	-- 	end
-    -- end
-    -- damage_to_inflict = damage_to_inflict * 100
-    -- EntityInflictDamage(entity, damage_to_inflict, "PROJECTILE", data.title, "NONE", 0, 0)
 end
 
 data.do_midas_death = function(entity)
