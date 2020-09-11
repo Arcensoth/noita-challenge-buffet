@@ -1,5 +1,7 @@
 -- NOTE We overwrite this file to allow disabling of the maximum HP cap increase.
 
+-- TODO Use ModTextFileGetContent/ModTextFileSetContent for compatibility.
+
 dofile( "data/scripts/game_helpers.lua" )
 
 function item_pickup( entity_item, entity_who_picked, name )

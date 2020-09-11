@@ -1,7 +1,6 @@
-dofile_once("mods/io__github__arcensoth__nqn/files/namespacing.lua")
-dofile_once(namespace_local_file("scripts/utils/perks.lua"))
-dofile_once(namespace_local_file("perks/heartbreak/data.lua"))
+local ns = dofile_once("mods/io__github__arcensoth__nqn/files/namespacing.lua")
+local heartbreak_perk = dofile_once(ns.file("perks/heartbreak/data.lua"))
+local gold_allergy_perk = dofile_once(ns.file("perks/gold_allergy/data.lua"))
 
-add_perks({
-	HEARTBREAK_PERK_DATA
-})
+table.insert(perk_list, heartbreak_perk.definition)
+table.insert(perk_list, gold_allergy_perk.definition)

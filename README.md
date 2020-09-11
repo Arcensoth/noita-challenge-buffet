@@ -9,12 +9,13 @@ Additional features and challenges inspired by nightmare mode.
 ### Cursed perks
 
 - Heartbreak: maximum health can no longer be increased
+- Midas Curse: gold is now deadly and must be avoided
 
 ## Developer notes
 
 ### Capping all cases of maximum HP increase
 
-In order to get the heartbreak curse to work, all cases of maximum HP increase must be accounted for.
+In order to get Heartbreak to work, all cases of maximum HP increase must be accounted for.
 
 The following perks interact the player's maximum HP in some way:
 
@@ -35,3 +36,11 @@ The following items increase the player's maximum HP _as well as_ their maximum 
 All in all, only `heart_fullhp_temple` needs to be adjusted to keep the player's maximum HP frozen at a particular value.
 
 To accomplish this, we introduce a new `VariableStorageComponent` named `temple_hearts_obey_max_hp_cap` containing a `value_int` that states whether temple hearts should obey the player's current maximum HP cap.
+
+### Accounting for all cases of touching gold
+
+In order to get Midas Curse to work, we must account for all cases of the player touching gold:
+
+1. Picking up gold nuggets
+2. Picking up bloody gold nuggets
+3. Walking through gold dust
