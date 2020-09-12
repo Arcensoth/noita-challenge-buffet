@@ -13,6 +13,7 @@ data.description = "You are cursed: maximum health cannot be increased"
 -- @@ HANDLERS
 
 data.on_init = function(entity_perk_item, entity_who_picked, item_name)
+	log.debug("Picked up perk: " .. data.name)
     -- Permanently cap the player's max HP at their current max HP.
 	local damagemodels = EntityGetComponent(entity_who_picked, "DamageModelComponent")
 	if (damagemodels ~= nil) then

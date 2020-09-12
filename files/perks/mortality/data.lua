@@ -29,7 +29,7 @@ end
 -- @@ HANDLERS
 
 data.on_init = function(entity_perk_item, entity_who_picked, item_name)
-    log.debug("Picked up mortality perk")
+    log.debug("Picked up perk: " .. data.name)
     -- Add a tag that we can detect when taking damage.
 	EntityAddTag(entity_who_picked, data.effect_tag)
 	-- Update HP immediately.
