@@ -2,6 +2,7 @@ dofile_once("data/scripts/lib/utilities.lua")
 
 local ns = dofile_once("mods/io__github__arcensoth__nqn/files/namespacing.lua")
 local log = dofile_once("mods/io__github__arcensoth__nqn/files/logging.lua")
+dofile_once(ns.file("scripts/utils/effects.lua"))
 
 local data = {}
 
@@ -31,6 +32,8 @@ data.do_gold_death = function(entity)
     -- Get the player's coordinates.
     local x, y = EntityGetTransform(entity)
     log.debug("Spawning gold death at: " .. x, ", " .. y)
+    -- Make sure they aren't invincible.
+    purge_effects_and_stains(entity)
     -- Create a (custom) touch of gold projectile to convert the player body into gold dust.
     local projectile_id = EntityLoad(ns.file("perks/gold_allergy/projectiles/gold_death.xml"), x, y)
     EntityAddChild(entity, projectile_id)

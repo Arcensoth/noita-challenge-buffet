@@ -11,7 +11,8 @@ function init_world()
 	spawn_perk_that_keeps_others(615, -100, ns.key("gold_allergy"))
 	
 	-- DELETEME
-	-- spawn_perk_that_keeps_others(225, -100, ns.key("gold_allergy"))
+	-- spawn_perk_that_keeps_others(225, -90, ns.key("gold_allergy"))
+	-- EntityLoad(ns.base_file("entities/animals/boss_centipede/rewards/gold_reward.xml"), 250, -120)
 	-- EntityLoad(ns.base_file("entities/items/pickup/goldnugget.xml"), 650, -120)
 	-- EntityLoad(ns.base_file("entities/items/pickup/goldnugget_10.xml"), 750, -120)
 	-- EntityLoad(ns.base_file("entities/items/pickup/goldnugget_50.xml"), 670, -120)
