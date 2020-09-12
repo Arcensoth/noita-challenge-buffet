@@ -76,5 +76,5 @@ The `message` parameter is a localized string, likely intended to be used with t
 There is an accurate but somewhat unwieldy work-around: every time damage is received, scan over all of the `DamageModelComponent`s to check which ones recently fired via the `mLastMaterialDamageFrame` property. Then we check the `materials_that_damage` property to see if it matches the list of materials we provided earlier and, if so, proceed to kill the player.
 
 [hbrk]: ./files/perks/heartbreak/item.png
-[bofm]: ./files/perks/gold_allergy/item.png
+[bofm]: ./files/perks/bane_of_midas/item.png
 [mort]: ./files/perks/mortality/item.png

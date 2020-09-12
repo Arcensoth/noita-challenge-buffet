@@ -1,6 +1,6 @@
 local ns = dofile_once("mods/io__github__arcensoth__challenge_buffet/files/scripts/utils/namespacing.lua")
 local log = dofile_once(ns.file("scripts/utils/logging.lua"))
-local gold_allergy_perk = dofile_once(ns.file("perks/gold_allergy/data.lua"))
+local bane_of_midas_perk = dofile_once(ns.file("perks/bane_of_midas/data.lua"))
 
 function damage_received(damage, message, entity_thats_responsible, is_fatal)
     -- Optimzation: short-circuit immediately if we're dealing non-negligible damage.
@@ -18,10 +18,10 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal)
             if (m_last_frame >= current_frame) then
                 -- Only care about damage being caused by gold materials.
                 local materials_that_damage = ComponentGetValue2(damage_component, "materials_that_damage")
-                if (materials_that_damage == gold_allergy_perk.gold_materials_that_damage) then
-                    gold_allergy_perk.do_gold_death(entity)
-                elseif (materials_that_damage == gold_allergy_perk.midas_materials_that_damage) then
-                    gold_allergy_perk.do_midas_death(entity)
+                if (materials_that_damage == bane_of_midas_perk.gold_materials_that_damage) then
+                    bane_of_midas_perk.do_gold_death(entity)
+                elseif (materials_that_damage == bane_of_midas_perk.midas_materials_that_damage) then
+                    bane_of_midas_perk.do_midas_death(entity)
                 end
             end
 		end

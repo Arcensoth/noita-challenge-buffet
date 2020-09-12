@@ -5,5 +5,5 @@ local ns = dofile( "mods/io__github__arcensoth__challenge_buffet/files/scripts/u
 --      on_gold_item_pickup(entity_item, entity_who_picked, item_name)
 
 GOLD_ITEM_PICKUP_CALLBACKS = {
-    ns.file("perks/gold_allergy/data.lua")
+    ns.file("perks/bane_of_midas/data.lua")
 }

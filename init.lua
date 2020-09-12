@@ -8,11 +8,11 @@ function init_world()
 
 	-- For now just place cursed perks in the mountain entrance.
 	spawn_perk_that_keeps_others(595, -100, ns.key("heartbreak"))
-	spawn_perk_that_keeps_others(615, -100, ns.key("gold_allergy"))
-	spawn_perk_that_keeps_others(635, -100, ns.key("mortality"))
+	spawn_perk_that_keeps_others(615, -100, ns.key("mortality"))
+	spawn_perk_that_keeps_others(635, -100, ns.key("bane_of_midas"))
 	
 	-- DELETEME
-	-- spawn_perk_that_keeps_others(225, -90, ns.key("gold_allergy"))
+	-- spawn_perk_that_keeps_others(225, -90, ns.key("bane_of_midas"))
 	-- EntityLoad(ns.base_file("entities/animals/boss_centipede/rewards/gold_reward.xml"), 250, -120)
 	-- EntityLoad(ns.base_file("entities/items/pickup/goldnugget.xml"), 650, -120)
 	-- EntityLoad(ns.base_file("entities/items/pickup/goldnugget_10.xml"), 750, -120)

@@ -8,13 +8,13 @@ local data = {}
 
 -- @@ PROPERTIES
 
-data.name = "gold_allergy"
+data.name = "bane_of_midas"
 data.perk_id = ns.key(data.name)
 data.title = "Bane of Midas"
 data.description = "You are cursed: gold is deadly and must be avoided"
 
-data.effect_tag = ns.key("gold_allergy")
-data.death_tag = ns.key("gold_death")
+data.effect_tag = ns.key("bane_of_midas")
+data.death_tag = ns.key("bane_of_midas_death")
 
 data.gold_materials_that_damage = "gold,gold_static,gold_static_dark,gold_molten,gold_radioactive,gold_box2d,gold_b2,bloodgold_box2d"
 data.gold_materials_how_much_damage = "0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001"
@@ -35,12 +35,12 @@ data.do_gold_death = function(entity)
     -- Make sure they aren't invincible.
     purge_effects_and_stains(entity)
     -- Create a (custom) touch of gold projectile to convert the player body into gold dust.
-    local projectile_id = EntityLoad(ns.file("perks/gold_allergy/projectiles/gold_death.xml"), x, y)
+    local projectile_id = EntityLoad(ns.file("perks/" .. data.name .. "/projectiles/gold_death.xml"), x, y)
     EntityAddChild(entity, projectile_id)
     -- Play the freezing sound for effect.
     GamePlaySound(ns.base_sound("misc"), "game_effect/frozen/create", x, y)
     -- Place the gold player statue.
-    EntityLoad(ns.file("perks/gold_allergy/projectiles/gold_burst.xml"), x, y)
+    EntityLoad(ns.file("perks/" .. data.name .. "/projectiles/gold_burst.xml"), x, y)
     EntityLoad(ns.base_file("entities/animals/boss_centipede/rewards/gold_reward.xml"), x, y)
 end
 
@@ -54,17 +54,17 @@ data.do_midas_death = function(entity)
     local x, y = EntityGetTransform(entity)
     log.debug("Spawning midas death at: " .. x, ", " .. y)
     -- Create a devastating touch of midas projectile.
-    local projectile_id = EntityLoad(ns.file("perks/gold_allergy/projectiles/midas_death.xml"), x, y)
+    local projectile_id = EntityLoad(ns.file("perks/" .. data.name .. "/projectiles/midas_death.xml"), x, y)
     EntityAddChild(entity, projectile_id)
-    EntityLoad(ns.file("perks/gold_allergy/projectiles/midas_burst.xml"), x, y)
-    EntityLoad(ns.file("perks/gold_allergy/projectiles/midas_conversion.xml"), x, y)
-    EntityLoad(ns.file("perks/gold_allergy/projectiles/midas_explosion.xml"), x, y)
+    EntityLoad(ns.file("perks/" .. data.name .. "/projectiles/midas_burst.xml"), x, y)
+    EntityLoad(ns.file("perks/" .. data.name .. "/projectiles/midas_conversion.xml"), x, y)
+    EntityLoad(ns.file("perks/" .. data.name .. "/projectiles/midas_explosion.xml"), x, y)
 end
 
 -- @@ HANDLERS
 
 data.on_init = function(entity_perk_item, entity_who_picked, item_name)
-    log.debug("Picked up gold allergy perk")
+    log.debug("Picked up perk: " .. data.name)
     -- Add a tag that we can detect during gold pick-ups.
     EntityAddTag(entity_who_picked, data.effect_tag)
     -- Make gold dust solid for the player.
@@ -106,7 +106,7 @@ data.on_init = function(entity_perk_item, entity_who_picked, item_name)
         entity_who_picked,
         "LuaComponent",
         {
-            script_damage_received=ns.file("perks/gold_allergy/handles/damage_received.lua"),
+            script_damage_received=ns.file("perks/" .. data.name .. "/handles/damage_received.lua"),
         }
     )
     -- Also handle material ingested/inhaled events to check for gold.
@@ -115,21 +115,21 @@ data.on_init = function(entity_perk_item, entity_who_picked, item_name)
     --     entity_who_picked,
     --     "LuaComponent",
     --     {
-    --         script_ingested_material=ns.file("perks/gold_allergy/handles/ingested_material.lua"),
+    --         script_ingested_material=ns.file("perks/" .. data.name .. "/handles/ingested_material.lua"),
     --     }
     -- )
     -- EntityAddComponent(
     --     entity_who_picked,
     --     "LuaComponent",
     --     {
-    --         script_inhaled_material=ns.file("perks/gold_allergy/handles/inhaled_material.lua"),
+    --         script_inhaled_material=ns.file("perks/" .. data.name .. "/handles/inhaled_material.lua"),
     --     }
     -- )
 end
 
 data.on_gold_item_pickup = function(entity_item, entity_who_picked, item_name)
     if (EntityHasTag(entity_who_picked, data.effect_tag)) then
-        log.debug("Picked up gold with gold allergy active")
+        log.debug("Picked up gold while cursed")
         data.do_gold_death(entity_who_picked)
     end
 end
