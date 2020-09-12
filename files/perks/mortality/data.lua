@@ -1,5 +1,5 @@
-local ns = dofile_once("mods/io__github__arcensoth__challenge_buffet/files/namespacing.lua")
-local log = dofile_once("mods/io__github__arcensoth__challenge_buffet/files/logging.lua")
+local ns = dofile_once("mods/io__github__arcensoth__challenge_buffet/files/scripts/utils/namespacing.lua")
+local log = dofile_once("mods/io__github__arcensoth__challenge_buffet/files/scripts/utils/logging.lua")
 
 local data = {}
 

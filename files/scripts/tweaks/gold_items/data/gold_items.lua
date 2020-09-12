@@ -1,4 +1,4 @@
-local ns = dofile( "mods/io__github__arcensoth__challenge_buffet/files/namespacing.lua" )
+local ns = dofile( "mods/io__github__arcensoth__challenge_buffet/files/scripts/utils/namespacing.lua" )
 
 -- NOTE Other mods can append to this file to add their own items.
 

@@ -2,7 +2,7 @@
 -- Ideally this would be in a common library - a dependency of this mod. But since dependency
 -- resolution is out-of-scope for Noita modding, we can just copy-paste the code into each mod.
 
-local ns = dofile("mods/io__github__arcensoth__challenge_buffet/files/namespacing.lua")
+local ns = dofile("mods/io__github__arcensoth__challenge_buffet/files/scripts/utils/namespacing.lua")
 
 local log = {}
 
@@ -29,7 +29,7 @@ log.LEVEL_NAMES = {
 
 log.log_with_level = function(message, level)
 	if (level >= log.LEVEL) then
-		local text = "[" .. ns.LOCAL_NAMESPACE .. ":" .. log.LEVEL_NAMES[level] .. "] " .. message
+		local text = "[" .. ns.NAMESPACE .. ":" .. log.LEVEL_NAMES[level] .. "] " .. message
 		print(text)
 		if (log.DO_GAME_PRINT) then
 			GamePrint(text)

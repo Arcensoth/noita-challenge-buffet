@@ -1,5 +1,5 @@
-local ns = dofile_once( "mods/io__github__arcensoth__challenge_buffet/files/namespacing.lua" )
-local log = dofile_once( "mods/io__github__arcensoth__challenge_buffet/files/logging.lua" )
+local ns = dofile_once( "mods/io__github__arcensoth__challenge_buffet/files/scripts/utils/namespacing.lua" )
+local log = dofile_once( "mods/io__github__arcensoth__challenge_buffet/files/scripts/utils/logging.lua" )
 dofile_once(ns.file("scripts/tweaks/gold_items/data/gold_item_pickup_callbacks.lua"))
 
 function item_pickup(entity_item, entity_who_picked, item_name)
