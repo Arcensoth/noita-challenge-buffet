@@ -1,6 +1,6 @@
 # Challenge Buffet
 
-Pick your poison. Choose a set of unique challenges.
+Pick your poison. Choose from a set of unique challenges.
 
 > **This mod is largely a work-in-progress.** Currently all challenges come in the form of "cursed" perks that can be optionally picked-up in the mountain entrance. This may change in the future, as new curses and other challenges are implemented.
 
