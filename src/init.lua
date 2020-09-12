@@ -9,6 +9,7 @@ function init_world()
 	-- For now just place cursed perks in the mountain entrance.
 	spawn_perk_that_keeps_others(595, -100, ns.key("heartbreak"))
 	spawn_perk_that_keeps_others(615, -100, ns.key("gold_allergy"))
+	spawn_perk_that_keeps_others(635, -100, ns.key("mortality"))
 	
 	-- DELETEME
 	-- spawn_perk_that_keeps_others(225, -90, ns.key("gold_allergy"))
