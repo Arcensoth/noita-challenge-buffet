@@ -5,7 +5,7 @@
 local ns = {}
 
 -- NOTE Set these to whatever paths you want to namespace with.
-ns.LOCAL_NAMESPACE = "io__github__arcensoth__nqn"
+ns.LOCAL_NAMESPACE = "io__github__arcensoth__challenge_buffet"
 ns.LOCAL_FILESPACE = "__namespaced__/" .. ns.LOCAL_NAMESPACE
 
 -- @@ FILES

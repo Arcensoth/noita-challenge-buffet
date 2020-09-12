@@ -1,6 +1,6 @@
-# Not Quite Nightmare
+# Challenge Buffet
 
-Additional features and challenges inspired by nightmare mode.
+Pick your poison. Choose a set of unique challenges.
 
 > **This mod is largely a work-in-progress.** Currently all challenges come in the form of "cursed" perks that can be optionally picked-up in the mountain entrance. This may change in the future, as new curses and other challenges are implemented.
 

@@ -2,7 +2,7 @@
 -- Ideally this would be in a common library - a dependency of this mod. But since dependency
 -- resolution is out-of-scope for Noita modding, we can just copy-paste the code into each mod.
 
-local ns = dofile("mods/io__github__arcensoth__nqn/files/namespacing.lua")
+local ns = dofile("mods/io__github__arcensoth__challenge_buffet/files/namespacing.lua")
 
 local log = {}
 
