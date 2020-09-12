@@ -39,7 +39,7 @@ data.on_init = function(entity_perk_item, entity_who_picked, item_name)
         entity_who_picked,
         "LuaComponent",
         {
-            script_damage_received=ns.file("perks/mortality/damage_received.lua"),
+            script_damage_received=ns.file("perks/mortality/handles/damage_received.lua"),
         }
     )
 end
