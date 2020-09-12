@@ -8,8 +8,8 @@ Additional features and challenges inspired by nightmare mode.
 
 ### Cursed perks
 
-- Heartbreak: maximum health can no longer be increased
-- Midas Curse: gold is now deadly and must be avoided
+- Heartbreak: maximum health cannot be increased
+- Bane of Midas: gold is deadly and must be avoided
 
 ## Developer notes
 
@@ -39,7 +39,7 @@ To accomplish this, we introduce a new tag `temple_hearts_obey_max_hp_cap` whose
 
 ### Detecting when the player interacts with gold
 
-In order to get Midas Curse to work, we must account for two distinct cases of the player interacting with gold:
+In order to get Bane of Midas to work, we must account for two distinct cases of the player interacting with gold:
 
 1. Picking up gold items
 2. Walking through gold dust

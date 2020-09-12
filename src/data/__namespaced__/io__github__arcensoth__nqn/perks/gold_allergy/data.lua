@@ -11,7 +11,7 @@ local data = {}
 data.name = "gold_allergy"
 data.perk_id = ns.key(data.name)
 data.title = "Bane of Midas"
-data.description = "You are cursed: gold is now deadly and must be avoided"
+data.description = "You are cursed: gold is deadly and must be avoided"
 
 data.effect_tag = ns.key("gold_allergy")
 data.death_tag = ns.key("gold_death")

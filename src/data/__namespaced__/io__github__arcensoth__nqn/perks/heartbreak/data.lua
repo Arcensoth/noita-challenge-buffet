@@ -8,7 +8,7 @@ local data = {}
 data.name = "heartbreak"
 data.perk_id = ns.key(data.name)
 data.title = "Heartbreak"
-data.description = "You are cursed: maximum health can no longer be increased"
+data.description = "You are cursed: maximum health cannot be increased"
 
 -- @@ HANDLERS
 
