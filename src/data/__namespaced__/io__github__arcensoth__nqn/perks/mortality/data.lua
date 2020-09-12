@@ -15,14 +15,13 @@ data.effect_tag = ns.key("mortality")
 -- @@ METHODS
 
 data.update_hp = function(entity, damage)
-	-- Set max HP and max HP cap to match new HP.
+	-- Set max HP to match new HP.
 	local damagemodels = EntityGetComponent(entity, "DamageModelComponent")
 	if (damagemodels ~= nil) then
 		for i, damagemodel in ipairs(damagemodels) do
 			local current_hp = tonumber(ComponentGetValue(damagemodel, "hp"))
 			local new_hp = current_hp - damage
 			ComponentSetValue(damagemodel, "max_hp", new_hp)
-			ComponentSetValue(damagemodel, "max_hp_cap", new_hp)
 		end
 	end
 end
@@ -43,8 +42,6 @@ data.on_init = function(entity_perk_item, entity_who_picked, item_name)
             script_damage_received=ns.file("perks/mortality/damage_received.lua"),
         }
     )
-	-- Stop temple hearts from overriding the cap and increasing maximum HP.
-	EntityAddTag(entity_who_picked, "temple_hearts_obey_max_hp_cap")
 end
 
 -- @@ PERK DEFINITION
