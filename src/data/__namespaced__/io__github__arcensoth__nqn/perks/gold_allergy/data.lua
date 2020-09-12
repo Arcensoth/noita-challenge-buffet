@@ -80,7 +80,7 @@ data.on_init = function(entity_perk_item, entity_who_picked, item_name)
         "DamageModelComponent",
         {
             materials_damage=1,
-            material_damage_min_cell_count=1,
+            material_damage_min_cell_count=4,
             materials_that_damage=data.gold_materials_that_damage,
             materials_how_much_damage=data.gold_materials_how_much_damage,
         }
