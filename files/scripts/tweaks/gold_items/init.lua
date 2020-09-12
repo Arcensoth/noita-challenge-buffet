@@ -1,6 +1,6 @@
-local ns = dofile( "mods/io__github__arcensoth__challenge_buffet/files/scripts/utils/namespacing.lua" )
-local log = dofile( "mods/io__github__arcensoth__challenge_buffet/files/scripts/utils/logging.lua" )
-dofile(ns.file("scripts/tweaks/gold_items/data/gold_items.lua"))
+local ns = dofile_once("mods/io__github__arcensoth__challenge_buffet/files/scripts/utils/namespacing.lua")
+local log = dofile_once(ns.file("scripts/utils/logging.lua"))
+dofile_once(ns.file("scripts/tweaks/gold_items/data/gold_items.lua"))
 
 local pick_up_script = ns.file("scripts/tweaks/gold_items/item_pickup.lua")
 

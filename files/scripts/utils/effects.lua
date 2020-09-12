@@ -1,5 +1,5 @@
 local ns = dofile_once("mods/io__github__arcensoth__challenge_buffet/files/scripts/utils/namespacing.lua")
-local log = dofile_once("mods/io__github__arcensoth__challenge_buffet/files/scripts/utils/logging.lua")
+local log = dofile_once(ns.file("scripts/utils/logging.lua"))
 
 function purge_effects_and_stains(entity)
 	-- Reset any `StatusEffectDataComponent`.
