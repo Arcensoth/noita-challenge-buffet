@@ -8,9 +8,13 @@ Pick your poison. Choose from a set of unique challenges.
 
 ### Cursed perks
 
-- Heartbreak: maximum health cannot be increased
-- Bane of Midas: gold is deadly and must be avoided
-- Mortality: take damage to maximum health
+You can choose any number of these cursed perks from the mountain entrance as soon as you start the game.
+
+Icon    | Name          | Description
+------- | ------------- | -----------
+![hbrk] | Heartbreak    | You are cursed: maximum health cannot be increased
+![bofm] | Bane of Midas | You are cursed: gold is deadly and must be avoided
+![mort] | Mortality     | You are cursed: take damage to maximum health
 
 ## Developer notes
 
@@ -70,3 +74,7 @@ damage_received(float damage, string message, int entity_thats_responsible, bool
 The `message` parameter is a localized string, likely intended to be used with the UI, which means there's no way to accurately convert it back into a material ID. Note that `entity_thats_responsible` is always set to `0` because it's not an entity that's responsible for the damage; it's a material.
 
 There is an accurate but somewhat unwieldy work-around: every time damage is received, scan over all of the `DamageModelComponent`s to check which ones recently fired via the `mLastMaterialDamageFrame` property. Then we check the `materials_that_damage` property to see if it matches the list of materials we provided earlier and, if so, proceed to kill the player.
+
+[hbrk]: ./data/__namespaced__/io__github__arcensoth__challenge_buffet/perks/heartbreak/item.png
+[bofm]: ./data/__namespaced__/io__github__arcensoth__challenge_buffet/perks/gold_allergy/item.png
+[mort]: ./data/__namespaced__/io__github__arcensoth__challenge_buffet/perks/mortality/item.png
