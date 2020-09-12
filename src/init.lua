@@ -1,4 +1,5 @@
 local ns = dofile_once("mods/io__github__arcensoth__nqn/files/namespacing.lua")
+local log = dofile_once("mods/io__github__arcensoth__nqn/files/logging.lua")
 
 -- @@ HELPERS
 
@@ -53,6 +54,13 @@ function OnPlayerSpawned(player_entity)
 end
 
 -- @@ MAIN
+
+local IS_DEV = DebugGetIsDevBuild()
+
+if (IS_DEV) then
+	log.warning("Running on the dev build")
+	ModMagicNumbersFileAdd(ns.file("magic_numbers/dev.xml"))
+end
 
 ModLuaFileAppend(
 	ns.base_file("scripts/perks/perk_list.lua"),
