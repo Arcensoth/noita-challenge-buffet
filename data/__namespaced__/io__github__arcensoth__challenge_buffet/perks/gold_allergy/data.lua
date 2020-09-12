@@ -74,7 +74,7 @@ data.on_init = function(entity_perk_item, entity_who_picked, item_name)
 			ComponentSetValue(sucker, "suck_gold", 0)
 		end
     end
-    -- Create a hook for when the player comes into contact with gold materials.
+    -- Cause the player to take (negligible) damage from gold materials.
     EntityAddComponent(
         entity_who_picked,
         "DamageModelComponent",
@@ -101,13 +101,30 @@ data.on_init = function(entity_perk_item, entity_who_picked, item_name)
             materials_how_much_damage=data.midas_materials_how_much_damage,
         }
     )
+    -- Detect when the player takes damage (from gold materials).
     EntityAddComponent(
         entity_who_picked,
         "LuaComponent",
         {
-            script_damage_received=ns.file("perks/gold_allergy/gold_material_damage.lua"),
+            script_damage_received=ns.file("perks/gold_allergy/handles/damage_received.lua"),
         }
     )
+    -- Also handle material ingested/inhaled events to check for gold.
+    -- TODO Why don't these work?
+    -- EntityAddComponent(
+    --     entity_who_picked,
+    --     "LuaComponent",
+    --     {
+    --         script_ingested_material=ns.file("perks/gold_allergy/handles/ingested_material.lua"),
+    --     }
+    -- )
+    -- EntityAddComponent(
+    --     entity_who_picked,
+    --     "LuaComponent",
+    --     {
+    --         script_inhaled_material=ns.file("perks/gold_allergy/handles/inhaled_material.lua"),
+    --     }
+    -- )
 end
 
 data.on_gold_item_pickup = function(entity_item, entity_who_picked, item_name)
