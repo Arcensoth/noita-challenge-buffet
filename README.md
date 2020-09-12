@@ -10,7 +10,7 @@ Additional features and challenges inspired by nightmare mode.
 
 - Heartbreak: maximum health cannot be increased
 - Bane of Midas: gold is deadly and must be avoided
-- Mortality: damage is applied to maximum health
+- Mortality: take damage to maximum health
 
 ## Developer notes
 

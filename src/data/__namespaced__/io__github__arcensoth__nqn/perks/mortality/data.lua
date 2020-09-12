@@ -8,7 +8,7 @@ local data = {}
 data.name = "mortality"
 data.perk_id = ns.key(data.name)
 data.title = "Mortality"
-data.description = "You are cursed: damage is applied to maximum health"
+data.description = "You are cursed: take damage to maximum health"
 
 data.effect_tag = ns.key("mortality")
 
