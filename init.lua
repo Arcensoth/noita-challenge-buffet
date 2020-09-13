@@ -4,31 +4,25 @@ local log = dofile_once(ns.file("scripts/utils/logging.lua"))
 -- @@ HELPERS
 
 function init_world()
+	-- NOTE This needs to be loaded here to avoid pre-loading the perk list.
 	dofile_once(ns.file("scripts/utils/perks.lua"))
-
 	-- For now just place cursed perks in the mountain entrance.
 	spawn_perk_that_keeps_others(595, -100, ns.key("heartbreak"))
 	spawn_perk_that_keeps_others(615, -100, ns.key("mortality"))
 	spawn_perk_that_keeps_others(635, -100, ns.key("bane_of_midas"))
-	
-	-- DELETEME
-	-- spawn_perk_that_keeps_others(225, -90, ns.key("bane_of_midas"))
-	-- EntityLoad(ns.base_file("entities/animals/boss_centipede/rewards/gold_reward.xml"), 250, -120)
-	-- EntityLoad(ns.base_file("entities/items/pickup/goldnugget.xml"), 650, -120)
-	-- EntityLoad(ns.base_file("entities/items/pickup/goldnugget_10.xml"), 750, -120)
-	-- EntityLoad(ns.base_file("entities/items/pickup/goldnugget_50.xml"), 670, -120)
-	-- EntityLoad(ns.base_file("entities/items/pickup/goldnugget_200.xml"), 680, -120)
-	-- EntityLoad(ns.base_file("entities/items/pickup/goldnugget_1000.xml"), 690, -120)
-	-- EntityLoad(ns.base_file("entities/items/pickup/goldnugget_10000.xml"), 700, -120)
-	-- EntityLoad(ns.base_file("entities/items/pickup/bloodmoney_10.xml"), 660, -120)
-	-- EntityLoad(ns.base_file("entities/items/pickup/bloodmoney_50.xml"), 670, -120)
-	-- EntityLoad(ns.base_file("entities/items/pickup/bloodmoney_200.xml"), 680, -120)
-	-- EntityLoad(ns.base_file("entities/items/pickup/bloodmoney_1000.xml"), 690, -120)
-	-- EntityLoad(ns.base_file("entities/items/pickup/bloodmoney_10000.xml"), 700, -120)
-	-- EntityLoad(ns.base_file("entities/animals/boss_centipede/rewards/gold_reward.xml"), 720, -120)
+	-- Do some things if we're running the dev build.
+	if (DebugGetIsDevBuild()) then
+		dofile_once(ns.file("scripts/utils/dev.lua"))
+		dev_init_world()
+	end
 end
 
 function init_player(player_entity)
+	-- Do some things if we're running the dev build.
+	if (DebugGetIsDevBuild()) then
+		dofile_once(ns.file("scripts/utils/dev.lua"))
+		dev_init_player(player_entity)
+	end
 end
 
 -- @@ HOOKS
@@ -57,9 +51,7 @@ end
 
 -- @@ MAIN
 
-local IS_DEV = DebugGetIsDevBuild()
-
-if (IS_DEV) then
+if (DebugGetIsDevBuild()) then
 	log.warning("Running on the dev build")
 	ModMagicNumbersFileAdd(ns.file("magic_numbers/dev.xml"))
 end
