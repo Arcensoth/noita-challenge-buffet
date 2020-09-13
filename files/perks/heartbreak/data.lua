@@ -1,5 +1,6 @@
 local ns = dofile_once("mods/io__github__arcensoth__challenge_buffet/files/scripts/utils/namespacing.lua")
 local log = dofile_once(ns.file("scripts/utils/logging.lua"))
+local tags = dofile_once(ns.file("scripts/const/tags.lua"))
 
 local data = {}
 
@@ -14,6 +15,8 @@ data.description = "You are cursed: maximum health cannot be increased"
 
 data.on_init = function(entity_perk_item, entity_who_picked, item_name)
 	log.debug("Picked up perk: " .. data.name)
+	-- Add a tag that can be used elsewhere to detect whether max HP cap should match max HP.
+	EntityAddTag(entity_who_picked, tags.sync_max_hp_with_cap)
     -- Permanently cap the player's max HP at their current max HP.
 	local damagemodels = EntityGetComponent(entity_who_picked, "DamageModelComponent")
 	if (damagemodels ~= nil) then
