@@ -2,6 +2,7 @@ dofile_once("data/scripts/lib/utilities.lua")
 
 local ns = dofile_once("mods/io__github__arcensoth__challenge_buffet/files/scripts/utils/namespacing.lua")
 local log = dofile_once(ns.file("scripts/utils/logging.lua"))
+local tags = dofile_once(ns.file("scripts/const/tags.lua"))
 dofile_once(ns.file("scripts/utils/effects.lua"))
 
 local data = {}
@@ -13,9 +14,6 @@ data.perk_id = ns.key(data.name)
 data.title = "Bane of Midas"
 data.description = "You are cursed: gold is deadly and must be avoided"
 
-data.effect_tag = ns.key("bane_of_midas")
-data.death_tag = ns.key("bane_of_midas_death")
-
 data.gold_materials_that_damage = "gold,gold_static,gold_static_dark,gold_molten,gold_radioactive,gold_box2d,gold_b2,bloodgold_box2d"
 data.gold_materials_how_much_damage = "0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001"
 data.midas_materials_that_damage = "midas,midas_precursor"
@@ -25,10 +23,10 @@ data.midas_materials_how_much_damage = "0.00001,0.00001"
 
 data.do_gold_death = function(entity)
     -- Make sure this only happens once.
-    if (EntityHasTag(entity, data.death_tag)) then
+    if (EntityHasTag(entity, tags.bane_of_midas_death)) then
         return nil
     end
-    EntityAddTag(entity, data.death_tag)
+    EntityAddTag(entity, tags.bane_of_midas_death)
     -- Get the player's coordinates.
     local x, y = EntityGetTransform(entity)
     log.debug("Spawning gold death at: " .. x, ", " .. y)
@@ -46,10 +44,10 @@ end
 
 data.do_midas_death = function(entity)
     -- Make sure this only happens once.
-    if (EntityHasTag(entity, data.death_tag)) then
+    if (EntityHasTag(entity, tags.bane_of_midas_death)) then
         return nil
     end
-    EntityAddTag(entity, data.death_tag)
+    EntityAddTag(entity, tags.bane_of_midas_death)
     -- Get the player's coordinates.
     local x, y = EntityGetTransform(entity)
     log.debug("Spawning midas death at: " .. x, ", " .. y)
@@ -66,7 +64,7 @@ end
 data.on_init = function(entity_perk_item, entity_who_picked, item_name)
     log.debug("Picked up perk: " .. data.name)
     -- Add a tag that we can detect during gold pick-ups.
-    EntityAddTag(entity_who_picked, data.effect_tag)
+    EntityAddTag(entity_who_picked, tags.bane_of_midas)
     -- Make gold dust solid for the player.
     local suckers = EntityGetComponent(entity_who_picked, "MaterialSuckerComponent")
 	if (suckers ~= nil) then
@@ -128,7 +126,7 @@ data.on_init = function(entity_perk_item, entity_who_picked, item_name)
 end
 
 data.on_gold_item_pickup = function(entity_item, entity_who_picked, item_name)
-    if (EntityHasTag(entity_who_picked, data.effect_tag)) then
+    if (EntityHasTag(entity_who_picked, tags.bane_of_midas)) then
         log.debug("Picked up gold while cursed")
         data.do_gold_death(entity_who_picked)
     end

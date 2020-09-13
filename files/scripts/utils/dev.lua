@@ -58,7 +58,7 @@ function dev_spawn_gold_statues()
 end
 
 function dev_init_world()
-	dev_spawn_hearts()
+	-- dev_spawn_hearts()
 	-- dev_spawn_gold_nuggets()
 	-- dev_spawn_blood_money()
 	-- dev_spawn_gold_statues()
