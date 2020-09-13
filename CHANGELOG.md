@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
+- Updated sprites for Heartbreak, Mortality, and Bane of Midas
+
 - Mortality now damages max HP directly, instead of syncing it with HP
   - In other words: the difference between HP and max HP will be maintained
   - This means that healing by increasing max HP is intended, however difficult
