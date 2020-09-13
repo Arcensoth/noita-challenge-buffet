@@ -20,14 +20,14 @@ data.update_hp = function(entity, damage)
 	local damagemodels = EntityGetComponent(entity, "DamageModelComponent")
 	if (damagemodels ~= nil) then
 		for i, damagemodel in ipairs(damagemodels) do
-			local current_hp = tonumber(ComponentGetValue(damagemodel, "hp"))
-			local new_hp = current_hp - damage
-			log.debug("Setting max HP to match new HP " .. new_hp .. " after taking " .. damage .. " damage")
-			ComponentSetValue(damagemodel, "max_hp", new_hp)
+			local current_max_hp = tonumber(ComponentGetValue(damagemodel, "max_hp"))
+			local new_max_hp = current_max_hp - damage
+			log.debug("Took " .. (damage * 25) .. " damage; decreasing max HP from " .. (current_max_hp * 25) .. " to " .. (new_max_hp * 25))
+			ComponentSetValue(damagemodel, "max_hp", new_max_hp)
 			-- Make sure to check whether max HP cap should be synced with max HP.
 			if (EntityHasTag(entity, tags.sync_max_hp_with_cap)) then
-				log.debug("Also syncing max HP cap with new max HP: " .. new_hp)
-				ComponentSetValue(damagemodel, "max_hp_cap", new_hp)
+				log.debug("Also syncing max HP cap with new max HP")
+				ComponentSetValue(damagemodel, "max_hp_cap", new_max_hp)
 			end
 		end
 	end
