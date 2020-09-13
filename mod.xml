@@ -1,6 +1,6 @@
 <Mod
 	name="Challenge Buffet"
-	description="Pick your poison. Choose from a set of unique challenges.\n[Version 0.2.0-dev]"
+	description="Pick your poison. Choose from a set of unique challenges.\n[Version 0.2.0]"
 	ui_newgame_name="Challenge Buffet"
 	ui_newgame_description="Pick your poison. Choose from a set of unique challenges."
 	ui_newgame_gfx_banner_bg="mods/nightmare/files/menu_banner_background.png"
