@@ -11,8 +11,6 @@ data.perk_id = ns.key(data.name)
 data.title = "Mortality"
 data.description = "You are cursed: take damage to maximum health"
 
-data.effect_tag = ns.key("mortality")
-
 -- @@ METHODS
 
 data.update_hp = function(entity, damage)
@@ -37,8 +35,6 @@ end
 
 data.on_init = function(entity_perk_item, entity_who_picked, item_name)
     log.debug("Picked up perk: " .. data.name)
-    -- Add a tag that we can detect when taking damage.
-	EntityAddTag(entity_who_picked, data.effect_tag)
 	-- Update HP immediately.
 	data.update_hp(entity_who_picked, 0)
 	-- Run a script to update HP whenever the player takes damage.
