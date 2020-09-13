@@ -13,8 +13,8 @@ You can choose any number of these cursed perks from the mountain entrance as so
 Icon    | Name          | Description
 ------- | ------------- | -----------
 ![hbrk] | Heartbreak    | You are cursed: maximum health cannot be increased
-![bofm] | Bane of Midas | You are cursed: gold is deadly and must be avoided
 ![mort] | Mortality     | You are cursed: take damage to maximum health
+![bofm] | Bane of Midas | You are cursed: gold is deadly and must be avoided
 
 ## Developer notes
 
