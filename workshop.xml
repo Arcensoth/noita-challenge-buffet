@@ -1,0 +1,7 @@
+<Mod
+	name="Challenge Buffet"
+	description="https://github.com/Arcensoth/noita-challenge-buffet"
+	tags="gameplay,perks,game modes"
+	dont_upload_folders=".git"
+	dont_upload_files=""
+></Mod>
