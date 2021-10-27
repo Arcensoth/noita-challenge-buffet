@@ -1,4 +1,4 @@
-local ns = dofile_once("mods/io__github__arcensoth__challenge_buffet/files/scripts/utils/namespacing.lua")
+local ns = dofile_once("mods/challenge_buffet/files/scripts/utils/namespacing.lua")
 dofile_once(ns.base_file("scripts/perks/perk.lua"))
 
 function grant_perk(entity, perk_id)

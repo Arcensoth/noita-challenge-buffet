@@ -1,4 +1,4 @@
-local ns = dofile_once("mods/io__github__arcensoth__challenge_buffet/files/scripts/utils/namespacing.lua")
+local ns = dofile_once("mods/challenge_buffet/files/scripts/utils/namespacing.lua")
 local log = dofile_once(ns.file("scripts/utils/logging.lua"))
 dofile_once(ns.file("scripts/tweaks/gold_items/data/gold_items.lua"))
 

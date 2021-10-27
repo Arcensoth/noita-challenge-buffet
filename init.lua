@@ -1,18 +1,24 @@
-local ns = dofile_once("mods/io__github__arcensoth__challenge_buffet/files/scripts/utils/namespacing.lua")
+local ns = dofile_once("mods/challenge_buffet/files/scripts/utils/namespacing.lua")
 local log = dofile_once(ns.file("scripts/utils/logging.lua"))
+
+dofile_once(ns.file("scripts/utils/translations.lua"))
+append_translations(ns.file("translations.csv"))
+
+local curses = dofile_once(ns.file("curses/curses.lua"))
+
+dofile_once(ns.file("curses/utils.lua"))
 
 -- @@ HELPERS
 
 function init_world()
-	-- NOTE This needs to be loaded here to avoid pre-loading the perk list.
-	dofile_once(ns.file("scripts/utils/perks.lua"))
-	-- For now just place cursed perks in the mountain entrance.
-	spawn_perk_that_keeps_others(595, -100, ns.key("heartbreak"))
-	spawn_perk_that_keeps_others(615, -100, ns.key("mortality"))
-	spawn_perk_that_keeps_others(635, -100, ns.key("bane_of_midas"))
+	-- For now just place curses in the mountain entrance.
+	create_curse_item(595 + 00, -100, curses.heartbreak)
+	create_curse_item(595 + 20, -100, curses.mortality)
+	create_curse_item(595 + 40, -100, curses.bane_of_midas)
+
 	-- Do some things if we're running the dev build.
 	if (DebugGetIsDevBuild()) then
-		dofile_once(ns.file("scripts/utils/dev.lua"))
+		dofile_once(ns.file("dev/init.lua"))
 		dev_init_world()
 	end
 end
@@ -20,7 +26,7 @@ end
 function init_player(player_entity)
 	-- Do some things if we're running the dev build.
 	if (DebugGetIsDevBuild()) then
-		dofile_once(ns.file("scripts/utils/dev.lua"))
+		dofile_once(ns.file("dev/init.lua"))
 		dev_init_player(player_entity)
 	end
 end
@@ -55,10 +61,5 @@ if (DebugGetIsDevBuild()) then
 	log.warning("Running on the dev build")
 	ModMagicNumbersFileAdd(ns.file("magic_numbers/dev.xml"))
 end
-
-ModLuaFileAppend(
-	ns.base_file("scripts/perks/perk_list.lua"),
-	ns.file("scripts/appends/perk_list_appends.lua")
-)
 
 dofile_once(ns.file("scripts/tweaks/gold_items/init.lua"))

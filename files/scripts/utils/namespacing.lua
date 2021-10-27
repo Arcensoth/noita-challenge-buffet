@@ -5,14 +5,14 @@
 local ns = {}
 
 -- NOTE Set this to whatever you want to use as a namespace.
-ns.NAMESPACE = "io__github__arcensoth__challenge_buffet"
+ns.NAMESPACE = "challenge_buffet"
 
 ns.base_file = function(value)
 	return "data/" .. value
 end
 
 ns.base_sound = function(value)
-	return "data/audio/Desktop/" .. value .. ".snd"
+	return "data/audio/Desktop/" .. value
 end
 
 ns.file = function(value)

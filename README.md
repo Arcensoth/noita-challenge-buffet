@@ -10,11 +10,11 @@ Pick your poison. Choose from a set of unique challenges.
 
 You can choose any number of these cursed perks from the mountain entrance as soon as you start the game.
 
-Icon    | Name          | Description
-------- | ------------- | -----------
-![hbrk] | Heartbreak    | You are cursed: maximum health cannot be increased
-![mort] | Mortality     | You are cursed: take damage to maximum health
-![bofm] | Bane of Midas | You are cursed: gold is deadly and must be avoided
+| Icon    | Name          | Description                                        |
+| ------- | ------------- | -------------------------------------------------- |
+| ![hbrk] | Heartbreak    | You are cursed: maximum health cannot be increased |
+| ![mort] | Mortality     | You are cursed: take damage to maximum health      |
+| ![bofm] | Bane of Midas | You are cursed: gold is deadly and must be avoided |
 
 ## Developer notes
 
@@ -75,6 +75,6 @@ The `message` parameter is a localized string, likely intended to be used with t
 
 There is an accurate but somewhat unwieldy work-around: every time damage is received, scan over all of the `DamageModelComponent`s to check which ones recently fired via the `mLastMaterialDamageFrame` property. Then we check the `materials_that_damage` property to see if it matches the list of materials we provided earlier and, if so, proceed to kill the player.
 
-[hbrk]: ./files/perks/heartbreak/item.png
-[bofm]: ./files/perks/bane_of_midas/item.png
-[mort]: ./files/perks/mortality/item.png
+[hbrk]: ./files/curses/heartbreak/item.png
+[bofm]: ./files/curses/bane_of_midas/item.png
+[mort]: ./files/curses/mortality/item.png

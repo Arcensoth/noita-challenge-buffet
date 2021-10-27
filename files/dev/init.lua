@@ -1,4 +1,4 @@
-local ns = dofile_once("mods/io__github__arcensoth__challenge_buffet/files/scripts/utils/namespacing.lua")
+local ns = dofile_once("mods/challenge_buffet/files/scripts/utils/namespacing.lua")
 local log = dofile_once(ns.file("scripts/utils/logging.lua"))
 dofile_once(ns.file("scripts/utils/perks.lua"))
 
@@ -57,11 +57,18 @@ function dev_spawn_gold_statues()
 	})
 end
 
+function dev_spawn_potions()
+	local entity = EntityLoad(ns.file("dev/potion_gold.xml"), 760, -110)
+	local entity = EntityLoad(ns.file("dev/potion_precursor.xml"), 780, -110)
+	local entity = EntityLoad(ns.file("dev/potion_midas.xml"), 800, -110)
+end
+
 function dev_init_world()
 	-- dev_spawn_hearts()
 	-- dev_spawn_gold_nuggets()
 	-- dev_spawn_blood_money()
 	-- dev_spawn_gold_statues()
+	dev_spawn_potions()
 end
 
 function dev_init_player(player_entity)
