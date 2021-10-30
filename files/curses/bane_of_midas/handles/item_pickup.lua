@@ -4,13 +4,11 @@ local ns = dofile_once("mods/challenge_buffet/files/scripts/utils/namespacing.lu
 local log = dofile_once(ns.file("scripts/utils/logging.lua"))
 local tags = dofile_once(ns.file("scripts/const/tags.lua"))
 
-local curses = dofile_once(ns.file("curses/curses.lua"))
-local curse = curses.bane_of_midas
-
-dofile_once(ns.file("curses/utils.lua"))
-
 function item_pickup(entity_item, entity_who_picked, item_name)
-	curse_pickup_common(entity_item, entity_who_picked, curse)
+	local bane_of_midas = dofile_once(ns.file("curses/bane_of_midas/curse.lua"))
+
+	dofile_once(ns.file("curses/utils.lua"))
+	curse_pickup_common(entity_item, entity_who_picked, bane_of_midas)
 
 	-- Add a tag that we can detect during gold pick-ups.
     EntityAddTag(entity_who_picked, tags.bane_of_midas)
@@ -30,8 +28,8 @@ function item_pickup(entity_item, entity_who_picked, item_name)
 		fire_damage_amount=0,
 		materials_damage=1,
 		material_damage_min_cell_count=4,
-		materials_that_damage=curse.gold_materials_that_damage,
-		materials_how_much_damage=curse.gold_materials_how_much_damage,
+		materials_that_damage=bane_of_midas.gold_materials_that_damage,
+		materials_how_much_damage=bane_of_midas.gold_materials_how_much_damage,
 	})
     EntityAddComponent(entity_who_picked, "DamageModelComponent", {
 		air_needed=0,
@@ -39,12 +37,12 @@ function item_pickup(entity_item, entity_who_picked, item_name)
 		fire_damage_amount=0,
 		materials_damage=1,
 		material_damage_min_cell_count=1,
-		materials_that_damage=curse.midas_materials_that_damage,
-		materials_how_much_damage=curse.midas_materials_how_much_damage,
+		materials_that_damage=bane_of_midas.midas_materials_that_damage,
+		materials_how_much_damage=bane_of_midas.midas_materials_how_much_damage,
 	})
 
     -- Detect when the player takes damage (from gold materials).
     EntityAddComponent(entity_who_picked, "LuaComponent", {
-		script_damage_received=curse.damage_received_script,
+		script_damage_received=bane_of_midas.damage_received_script,
     })
 end

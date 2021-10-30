@@ -1,10 +1,6 @@
 local ns = dofile_once("mods/challenge_buffet/files/scripts/utils/namespacing.lua")
 local log = dofile_once(ns.file("scripts/utils/logging.lua"))
 
-function load_curse(name)
-	return dofile_once(ns.file("curses/" .. name .. "/curse.lua"))
-end
-
 function create_curse_item(pos_x, pos_y, curse)
 	log.debug("Creating curse item `" .. curse.code .. "` at (" .. pos_x .. ", " .. pos_y .. ")")
 

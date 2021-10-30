@@ -4,13 +4,11 @@ local ns = dofile_once("mods/challenge_buffet/files/scripts/utils/namespacing.lu
 local log = dofile_once(ns.file("scripts/utils/logging.lua"))
 local tags = dofile_once(ns.file("scripts/const/tags.lua"))
 
-local curses = dofile_once(ns.file("curses/curses.lua"))
-local curse = curses.heartbreak
-
-dofile_once(ns.file("curses/utils.lua"))
-
 function item_pickup(entity_item, entity_who_picked, item_name)
-	curse_pickup_common(entity_item, entity_who_picked, curse)
+	local heartbreak = dofile_once(ns.file("curses/heartbreak/curse.lua"))
+	
+	dofile_once(ns.file("curses/utils.lua"))
+	curse_pickup_common(entity_item, entity_who_picked, heartbreak)
 
 	-- Add a tag that can be used elsewhere to detect whether max HP cap should match max HP.
 	EntityAddTag(entity_who_picked, tags.sync_max_hp_with_cap)
