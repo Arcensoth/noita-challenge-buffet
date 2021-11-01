@@ -6,7 +6,7 @@ local pandoras_box = dofile_once(ns.file("curses/pandoras_box/curse.lua"))
 log.info("Tweaking base mobs to add Pandora's Box entity processing script: " .. pandoras_box.process_entity_script)
 
 local content_to_insert = [[
-	<LuaComponent
+    <LuaComponent
         script_source_file="]] .. pandoras_box.process_entity_script .. [["
         remove_after_executed="1"
     ></LuaComponent>

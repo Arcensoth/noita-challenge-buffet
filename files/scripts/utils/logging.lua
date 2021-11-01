@@ -20,41 +20,41 @@ log.LEVEL = log.LEVEL_DEBUG
 log.DO_GAME_PRINT = DebugGetIsDevBuild()
 
 log.LEVEL_NAMES = {
-	"DEBUG",
-	"INFO",
-	"WARNING",
-	"ERROR",
-	"CRITICAL",
+    "DEBUG",
+    "INFO",
+    "WARNING",
+    "ERROR",
+    "CRITICAL",
 }
 
 log.log_with_level = function(message, level)
-	if (level >= log.LEVEL) then
-		local text = "[" .. ns.NAMESPACE .. ":" .. log.LEVEL_NAMES[level] .. "] " .. message
-		print(text)
-		if (log.DO_GAME_PRINT) then
-			GamePrint(text)
-		end
-	end
+    if (level >= log.LEVEL) then
+        local text = "[" .. ns.NAMESPACE .. ":" .. log.LEVEL_NAMES[level] .. "] " .. message
+        print(text)
+        if (log.DO_GAME_PRINT) then
+            GamePrint(text)
+        end
+    end
 end
 
 log.debug = function(message)
-	log.log_with_level(message, log.LEVEL_DEBUG)
+    log.log_with_level(message, log.LEVEL_DEBUG)
 end
 
 log.info = function(message)
-	log.log_with_level(message, log.LEVEL_INFO)
+    log.log_with_level(message, log.LEVEL_INFO)
 end
 
 log.warning = function(message)
-	log.log_with_level(message, log.LEVEL_WARNING)
+    log.log_with_level(message, log.LEVEL_WARNING)
 end
 
 log.error = function(message)
-	log.log_with_level(message, log.LEVEL_ERROR)
+    log.log_with_level(message, log.LEVEL_ERROR)
 end
 
 log.critical = function(message)
-	log.log_with_level(message, log.LEVEL_CRITICAL)
+    log.log_with_level(message, log.LEVEL_CRITICAL)
 end
 
 return log

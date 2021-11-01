@@ -7,7 +7,7 @@ local pick_up_script = ns.file("scripts/tweaks/gold_items/item_pickup.lua")
 log.info("Tweaking gold items to add pick-up script: " .. pick_up_script)
 
 local content_to_insert = [[
-	<LuaComponent
+    <LuaComponent
         script_item_picked_up="]] .. pick_up_script .. [["
     ></LuaComponent>
 ]]

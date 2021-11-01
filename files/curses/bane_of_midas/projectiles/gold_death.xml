@@ -1,17 +1,15 @@
 <Entity tags="projectile_player">
-	<InheritTransformComponent></InheritTransformComponent>
-	
-	<MagicConvertMaterialComponent
-		from_any_material="0"
-		convert_entities="1"
+    <InheritTransformComponent></InheritTransformComponent>
+
+    <MagicConvertMaterialComponent
+        from_any_material="0"
+        convert_entities="1"
         to_material="gold"
         steps_per_frame="7"
         loop="0"
-		is_circle="1"
+        is_circle="1"
         radius="30"
-	></MagicConvertMaterialComponent>
-	
-	<LifetimeComponent
-		lifetime="4"
-	></LifetimeComponent>  
+    ></MagicConvertMaterialComponent>
+
+    <LifetimeComponent lifetime="4"></LifetimeComponent>
 </Entity>

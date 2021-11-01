@@ -14,7 +14,7 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal)
     -- Check all of the entity's damage components to see which one just fired...
     local entity = GetUpdatedEntityID()
     local damage_components = EntityGetComponent(entity, "DamageModelComponent")
-	if (damage_components ~= nil) then
+    if (damage_components ~= nil) then
         for i, damage_component in ipairs(damage_components) do
             -- Only care about the ones that caused damaged recently.
             local current_frame = GameGetFrameNum()
@@ -28,6 +28,6 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal)
                     bane_of_midas.do_midas_death(entity)
                 end
             end
-		end
+        end
     end
 end

@@ -84,7 +84,7 @@ end
 curse.poll_for_entities = function()
     local enemies = EntityGetWithTag("enemy")
     for i, entity_id in pairs(enemies) do
-    	curse.process_entity(entity_id)
+        curse.process_entity(entity_id)
     end
 end
 
