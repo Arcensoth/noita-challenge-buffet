@@ -1,14 +1,16 @@
 local ns = dofile_once("mods/challenge_buffet/files/scripts/utils/namespacing.lua")
 local log = dofile_once(ns.file("scripts/utils/logging.lua"))
 
-function create_curse_item(pos_x, pos_y, curse)
+local curse_utils = {}
+
+curse_utils.create_pickup = function(curse, pos_x, pos_y)
     log.debug("Creating curse item `" .. curse.code .. "` at (" .. pos_x .. ", " .. pos_y .. ")")
 
     -- Create a new entity using the curse base.
-    local entity = EntityLoad(ns.file("curses/base.xml"), pos_x, pos_y)
+    local entity_id = EntityLoad(ns.file("curses/base.xml"), pos_x, pos_y)
 
     -- Turn it into an item that can be picked up.
-    EntityAddComponent(entity, "ItemComponent", {
+    EntityAddComponent(entity_id, "ItemComponent", {
         item_name=curse.name,
         ui_description=curse.description,
         ui_display_description_on_pick_up_hint=1,
@@ -18,12 +20,12 @@ function create_curse_item(pos_x, pos_y, curse)
         stats_count_as_item_pick_up=0,
     })
 
-    EntityAddComponent(entity, "UIInfoComponent", {
+    EntityAddComponent(entity_id, "UIInfoComponent", {
         name=curse.name,
     })
 
     -- Give it a visual sprite.
-    EntityAddComponent(entity, "SpriteComponent", {
+    EntityAddComponent(entity_id, "SpriteComponent", {
         image_file=curse.item_sprite,
         offset_x=8,
         offset_y=8,
@@ -32,27 +34,25 @@ function create_curse_item(pos_x, pos_y, curse)
     })
 
     -- Make it bob up and down.
-    EntityAddComponent(entity, "SpriteOffsetAnimatorComponent", {
+    EntityAddComponent(entity_id, "SpriteOffsetAnimatorComponent", {
       sprite_id=-1,
       x_amount=0,
-    --   x_amount=0.1,
       x_phase=0,
       x_phase_offset=0,
       x_speed=0,
-    --   x_speed=60,
       y_amount=2,
       y_speed=1,
     })
 
     -- Do something whenever it's picked up.
-    EntityAddComponent(entity, "LuaComponent", {
+    EntityAddComponent(entity_id, "LuaComponent", {
         script_item_picked_up=curse.item_pickup_script,
     })
 end
 
-function curse_pickup_common(entity_item, entity_who_picked, curse)
+curse_utils.on_pickup = function(curse, picker_entity_id, item_entity_id)
     -- Get the item's coordinates.
-    local pos_x, pos_y = EntityGetTransform(entity_item)
+    local pos_x, pos_y = EntityGetTransform(item_entity_id)
 
     log.debug("Picked up curse item `" .. curse.code .. "` at (" .. pos_x .. ", " .. pos_y .. ")")
 
@@ -60,9 +60,9 @@ function curse_pickup_common(entity_item, entity_who_picked, curse)
     EntityLoad(ns.file("curses/pickup_effect.xml"), pos_x, pos_y)
 
     -- Remove the item.
-    EntityKill(entity_item)
+    EntityKill(item_entity_id)
 
-    -- Add the curse icon to the UI.
+    -- Add the curse icon to the picker's UI.
     -- NOTE Without the child entity, only the first icon shows up in the UI.
     local ui_entity = EntityCreateNew("")
     EntityAddComponent(ui_entity, "UIIconComponent", {
@@ -70,5 +70,7 @@ function curse_pickup_common(entity_item, entity_who_picked, curse)
         description = curse.description,
         icon_sprite_file = curse.icon_sprite
     })
-    EntityAddChild(entity_who_picked, ui_entity)
+    EntityAddChild(picker_entity_id, ui_entity)
 end
+
+return curse_utils

@@ -1,5 +1,6 @@
 local ns = dofile_once("mods/challenge_buffet/files/scripts/utils/namespacing.lua")
 local log = dofile_once(ns.file("scripts/utils/logging.lua"))
+local curse_utils = dofile_once(ns.file("curses/curse_utils.lua"))
 
 dofile_once(ns.file("scripts/utils/translations.lua"))
 append_translations(ns.file("translations.csv"))
@@ -7,13 +8,11 @@ append_translations(ns.file("translations.csv"))
 -- @@ HELPERS
 
 function init_world()
-    dofile_once(ns.file("curses/utils.lua"))
-    
     -- For now just place curses in the mountain entrance.
-    create_curse_item(595 + 00, -100, dofile_once(ns.file("curses/bane_of_midas/curse.lua")))
-    create_curse_item(595 + 20, -100, dofile_once(ns.file("curses/heartbreak/curse.lua")))
-    create_curse_item(595 + 40, -100, dofile_once(ns.file("curses/mortality/curse.lua")))
-    -- create_curse_item(595 + 60, -100, dofile_once(ns.file("curses/pandoras_box/curse.lua")))
+    curse_utils.create_pickup(dofile_once(ns.file("curses/bane_of_midas/curse.lua")), 595 + 00, -100)
+    curse_utils.create_pickup(dofile_once(ns.file("curses/heartbreak/curse.lua")),    595 + 20, -100)
+    curse_utils.create_pickup(dofile_once(ns.file("curses/mortality/curse.lua")),     595 + 40, -100)
+    -- curse_utils.create_pickup(dofile_once(ns.file("curses/pandoras_box/curse.lua")),  595 + 60, -100)
 
     -- Do some things if we're running the dev build.
     if (DebugGetIsDevBuild()) then
@@ -61,5 +60,4 @@ if (DebugGetIsDevBuild()) then
     ModMagicNumbersFileAdd(ns.file("magic_numbers/dev.xml"))
 end
 
-dofile_once(ns.file("scripts/tweaks/gold_items/init.lua"))
 dofile_once(ns.file("curses/pandoras_box/tweaks/init.lua"))
